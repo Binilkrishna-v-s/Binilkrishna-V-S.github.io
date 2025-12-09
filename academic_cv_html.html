@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binilkrishna V S - Research Student</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .serif {
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* Light Theme */
+        body.light {
+            background-color: white;
+            color: black;
+        }
+
+        body.light .secondary-text {
+            color: #6b7280;
+        }
+
+        body.light .card-bg {
+            background-color: #f9fafb;
+        }
+
+        body.light .border-color {
+            border-color: #e5e7eb;
+        }
+
+        body.light .button-outline {
+            border: 1px solid #e5e7eb;
+            color: black;
+        }
+
+        body.light .button-outline:hover {
+            background-color: #f9fafb;
+        }
+
+        body.light .button-filled {
+            background-color: black;
+            color: white;
+        }
+
+        body.light .button-filled:hover {
+            background-color: #3f3f46;
+        }
+
+        body.light .nav-bg {
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background-color: #18181b;
+            color: white;
+        }
+
+        body.dark .secondary-text {
+            color: #a1a1aa;
+        }
+
+        body.dark .card-bg {
+            background-color: #27272a;
+        }
+
+        body.dark .border-color {
+            border-color: #3f3f46;
+        }
+
+        body.dark .button-outline {
+            border: 1px solid #3f3f46;
+            color: white;
+        }
+
+        body.dark .button-outline:hover {
+            background-color: #27272a;
+        }
+
+        body.dark .button-filled {
+            background-color: white;
+            color: black;
+        }
+
+        body.dark .button-filled:hover {
+            background-color: #e4e4e7;
+        }
+
+        body.dark .nav-bg {
+            background-color: rgba(24, 24, 27, 0.95);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .nav-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            background: none;
+            border: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+        }
+
+        .theme-toggle {
+            padding: 0.5rem 1rem;
+            border: 1px solid;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Main Content */
+        .content {
+            padding-top: 5rem;
+            min-height: 100vh;
+        }
+
+        .section {
+            display: none;
+            min-height: calc(100vh - 5rem);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Home Section */
+        .home-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            min-height: calc(100vh - 5rem);
+        }
+
+        .home-text {
+            flex: 1;
+            max-width: 700px;
+        }
+
+        .home-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .home-subtitle {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+        }
+
+        .home-description {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .home-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .home-footer {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.875rem;
+        }
+
+        .home-footer a {
+            transition: all 0.3s ease;
+        }
+
+        .home-footer a:hover {
+            opacity: 0.7;
+        }
+
+        .home-photo {
+            flex-shrink: 0;
+        }
+
+        .photo-circle {
+            width: 384px;
+            height: 384px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .photo-placeholder {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            position: absolute;
+            bottom: 2rem;
+        }
+
+        /* Research Section */
+        .research-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .section-block {
+            margin-bottom: 5rem;
+        }
+
+        .research-description {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            max-width: 1000px;
+        }
+
+        .experience-card {
+            padding: 1.5rem;
+            border: 1px solid;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-institution {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-location {
+            font-size: 0.875rem;
+        }
+
+        .experience-period {
+            font-size: 0.875rem;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .experience-details {
+            padding-top: 1rem;
+            border-top: 1px solid;
+        }
+
+        .experience-description {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-card {
+            padding: 1.5rem;
+            border: 1px solid;
+        }
+
+        .skill-title {
+            font-size: 1.125rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .publication-card {
+            padding: 2.5rem;
+            border: 2px solid;
+        }
+
+        .publication-number {
+            font-size: 3.75rem;
+            font-weight: bold;
+            opacity: 0.3;
+            margin-right: 2rem;
+            float: left;
+        }
+
+        .publication-authors {
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .publication-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.75rem;
+        }
+
+        .publication-journal {
+            font-size: 0.875rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .publication-link {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Education Section */
+        .education-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        .education-card {
+            padding: 1.5rem;
+            border: 1px solid;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-degree {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            margin-bottom: 0.25rem;
+        }
+
+        .education-details {
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .education-score {
+            font-weight: 600;
+        }
+
+        .awards-card {
+            padding: 2rem;
+            border: 1px solid;
+        }
+
+        .awards-list {
+            list-style: none;
+        }
+
+        .awards-list li {
+            display: flex;
+            align-items: start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 5rem);
+            padding: 2rem 1.5rem;
+        }
+
+        .contact-content {
+            max-width: 768px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .contact-description {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            padding: 2.5rem;
+            border: 1px solid;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-value {
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-value:hover {
+            opacity: 0.7;
+        }
+
+        .contact-divider {
+            border-top: 1px solid;
+            padding-top: 1.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .home-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-title {
+                font-size: 2.5rem;
+            }
+
+            .photo-circle {
+                width: 256px;
+                height: 256px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Navigation -->
+    <nav class="nav-bg border-color">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="nav-title serif">Binilkrishna V S</div>
+                <div class="nav-subtitle secondary-text">Research Student</div>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-link active" onclick="showSection('home')">Home</button>
+                <button class="nav-link secondary-text" onclick="showSection('research')">Research</button>
+                <button class="nav-link secondary-text" onclick="showSection('education')">Education</button>
+                <button class="nav-link secondary-text" onclick="showSection('contact')">Contact</button>
+                <button class="theme-toggle border-color" onclick="toggleTheme()">
+                    <span id="theme-text">Dark</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="home-container">
+                <div class="home-text">
+                    <h1 class="home-title serif">
+                        Hello, I'm<br>
+                        <em>Binilkrishna V S</em>
+                    </h1>
+                    
+                    <p class="home-subtitle secondary-text">Research Student</p>
+                    
+                    <p class="home-description secondary-text">
+                        I am an Integrated MSc student at the National Institute of Science Education and Research (NISER) Bhubaneswar, India. Currently, I am pursuing a major degree in chemistry and have completed six semesters of the course.
+                    </p>
+                    
+                    <div class="home-buttons">
+                        <a href="mailto:binilkrishna.vs@niser.ac.in" class="button button-filled">
+                            <i data-lucide="mail" style="width: 16px; height: 16px;"></i>
+                            Contact Me
+                        </a>
+                        <a href="#" download="Binilkrishna_CV.pdf" class="button button-outline border-color">
+                            <i data-lucide="download" style="width: 16px; height: 16px;"></i>
+                            Download CV
+                        </a>
+                    </div>
+                    
+                    <div class="home-footer secondary-text">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                            <span>NISER, Bhubaneswar, India</span>
+                        </div>
+                        <a href="https://instagram.com/_binilkrishna_v_s_" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="https://github.com/Binilkrishna-v-s" target="_blank" rel="noopener noreferrer">
+                            <i data-lucide="github" style="width: 20px; height: 20px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="home-photo">
+                    <div class="photo-circle">
+                        <i data-lucide="user" style="width: 128px; height: 128px; color: #9ca3af;"></i>
+                        <span class="photo-placeholder">Add your photo here</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="research-container">
+                <!-- Research Interests -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Research Interests</h2>
+                    <p class="research-description secondary-text">
+                        I am deeply interested in boron-based chemistry, particularly the design, stabilization, and reactivity of highly sensitive main-group molecules. I am motivated to explore how such species can be harnessed for advancing catalysis, small-molecule activation, and functional material development.
+                    </p>
+                </div>
+
+                <!-- Research Experience -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Research Experience</h2>
+                    
+                    <div class="experience-card card-bg border-color">
+                        <div class="experience-header">
+                            <div style="flex: 1;">
+                                <h3 class="experience-title">MSc Thesis Project</h3>
+                                <p class="experience-institution">National Institute of Science Education and Research (NISER)</p>
+                                <p class="experience-location secondary-text">Bhubaneswar, India • Prof. Venkatasubbaiah Krishnan</p>
+                            </div>
+                            <span class="experience-period secondary-text">Aug 2025 - Present</span>
+                        </div>
+                        <div class="experience-details border-color">
+                            <p class="secondary-text" style="font-size: 0.875rem;">
+                                <span class="experience-description">Design and Synthesis of Phosphorus Compounds for Tetra-Coordinated Boranes:</span> Synthesized tetra-coordinated boron complexes bearing diphenylphosphine based ligands and exploring photophysical properties.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-card card-bg border-color">
+                        <div class="experience-header">
+                            <div style="flex: 1;">
+                                <h3 class="experience-title">Summer Intern</h3>
+                                <p class="experience-institution">Julius-Maximilians-Universität Würzburg</p>
+                                <p class="experience-location secondary-text">Germany • Prof. Dr. Holger Braunschweig</p>
+                            </div>
+                            <span class="experience-period secondary-text">May 2025 - July 2025</span>
+                        </div>
+                        <div class="experience-details border-color">
+                            <p class="secondary-text" style="font-size: 0.875rem;">
+                                <span class="experience-description">Synthesis and Reactivity of Ferrocene-Based Borylene Systems:</span> Investigated CO, H₂, and CO₂ activation by in-situ generated borylenes and studied reversible borylene–diborene interconversion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-card card-bg border-color">
+                        <div class="experience-header">
+                            <div style="flex: 1;">
+                                <h3 class="experience-title">Winter Intern</h3>
+                                <p class="experience-institution">National Institute of Science Education and Research (NISER)</p>
+                                <p class="experience-location secondary-text">Bhubaneswar, India • Prof. Venkatasubbaiah Krishnan</p>
+                            </div>
+                            <span class="experience-period secondary-text">Dec 2024</span>
+                        </div>
+                        <div class="experience-details border-color">
+                            <p class="secondary-text" style="font-size: 0.875rem;">
+                                <span class="experience-description">Phenanthroline-Imidazole Ligands and Boron Complexes:</span> Synthesized key ligands to expand tris-heteroleptic boron frameworks.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-card card-bg border-color">
+                        <div class="experience-header">
+                            <div style="flex: 1;">
+                                <h3 class="experience-title">Summer Intern</h3>
+                                <p class="experience-institution">Indian Institute of Science Education and Research (IISER)</p>
+                                <p class="experience-location secondary-text">Kolkata, India • Prof. Raja Shunmugam</p>
+                            </div>
+                            <span class="experience-period secondary-text">May 2024 - July 2024</span>
+                        </div>
+                        <div class="experience-details border-color">
+                            <p class="secondary-text" style="font-size: 0.875rem;">
+                                <span class="experience-description">Norbornene-Based Monomers for Porous Organic Polymers:</span> Synthesized and characterized polymers such as PNor-Boc and GNor-L2.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-card card-bg border-color">
+                        <div class="experience-header">
+                            <div style="flex: 1;">
+                                <h3 class="experience-title">Summer Intern</h3>
+                                <p class="experience-institution">Indian Institute of Science Education and Research (IISER)</p>
+                                <p class="experience-location secondary-text">Trivandrum, India • Dr. Jerry Alfred Ferrero</p>
+                            </div>
+                            <span class="experience-period secondary-text">May 2023 - July 2023</span>
+                        </div>
+                        <div class="experience-details border-color">
+                            <p class="secondary-text" style="font-size: 0.875rem;">
+                                <span class="experience-description">Self-Assembled BSA Protein Monolayers:</span> Explored electron transport properties of BSA protein on gold substrates.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card card-bg border-color">
+                            <h3 class="skill-title">Synthetic Techniques</h3>
+                            <ul class="skill-list secondary-text">
+                                <li><span style="font-weight: bold;">•</span> <span>Glovebox & Schlenk Line</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Crystallization</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Column Chromatography</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>TLC</span></li>
+                            </ul>
+                        </div>
+                        <div class="skill-card card-bg border-color">
+                            <h3 class="skill-title">Characterization</h3>
+                            <ul class="skill-list secondary-text">
+                                <li><span style="font-weight: bold;">•</span> <span>Multinuclear NMR</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>IR Spectroscopy</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Mass Spectrometry</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>UV-VIS & Fluorescence</span></li>
+                            </ul>
+                        </div>
+                        <div class="skill-card card-bg border-color">
+                            <h3 class="skill-title">Computational</h3>
+                            <ul class="skill-list secondary-text">
+                                <li><span style="font-weight: bold;">•</span> <span>Gaussian & Gaussview</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Python Programming</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Mesternova</span></li>
+                                <li><span style="font-weight: bold;">•</span> <span>Chemdraw</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publications -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Publications</h2>
+                    <div class="publication-card card-bg border-color">
+                        <div class="publication-number secondary-text serif">01</div>
+                        <p class="publication-authors secondary-text">
+                            <span style="font-weight: 600;">S. Kar, K. Saha, V. Binilkrishna</span>, I. Krummenacher, R. D. Dewhurst, H. Braunschweig
+                        </p>
+                        <h3 class="publication-title serif">
+                            Direct Interconversion between Bis(borylenes) and Diborenes
+                        </h3>
+                        <p class="publication-journal secondary-text">
+                            Journal of the American Chemical Society, 2025, 147, 44562–44571
+                        </p>
+                        <a href="https://doi.org/10.1021/jacs.5c17540" target="_blank" rel="noopener noreferrer" class="publication-link" style="text-decoration: underline;">
+                            DOI: 10.1021/jacs.5c17540
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section">
+            <div class="education-container">
+                <!-- Education -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Education</h2>
+                    
+                    <div class="education-card card-bg border-color">
+                        <h3 class="education-degree">Integrated MSc (Chemical Sciences)</h3>
+                        <p class="secondary-text">National Institute of Science Education and Research (NISER)</p>
+                        <p class="education-details secondary-text">Bhubaneswar, India • 2022 - Present</p>
+                        <p class="education-score">CGPA: 8.34/10</p>
+                    </div>
+
+                    <div class="education-card card-bg border-color">
+                        <h3 class="education-degree">Senior Secondary Education</h3>
+                        <p class="secondary-text">St. Thomas College Higher Secondary School</p>
+                        <p class="education-details secondary-text">Kerala, India • 2021</p>
+                        <p class="education-score">Score: 99.3%</p>
+                    </div>
+
+                    <div class="education-card card-bg border-color">
+                        <h3 class="education-degree">Matriculation</h3>
+                        <p class="secondary-text">S.N.G.S.H.S.S Karamuck</p>
+                        <p class="education-details secondary-text">Kerala, India • 2019</p>
+                        <p class="education-score">Score: 100%</p>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Awards & Recognition</h2>
+                    <div class="awards-card card-bg border-color">
+                        <ul class="awards-list secondary-text">
+                            <li><span style="font-weight: bold;">•</span> <span>Recipient of DAE Incentive Scheme for Holistic Science Education and Augmentation (DISHA) Scholarship issued by Department of Atomic Energy (DAE), Government of India</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span>Qualified Graduate Aptitude Test in Engineering (GATE) in 2025</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span>Qualified National Entrance Screening Test (NEST) Undergraduate admission exam for NISER</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span>Received Monetary award for excellent performance in Class XII Board examination</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span>Centum in Chemistry and Biology for Class XII examination</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="section-block">
+                    <h2 class="section-title serif">Leadership & Involvement</h2>
+                    <div class="awards-card card-bg border-color">
+                        <ul class="awards-list secondary-text">
+                            <li><span style="font-weight: bold;">•</span> <span><span style="font-weight: 600;">President</span> - SAPSARA: Photography Club, NISER (2024 - Present)</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span><span style="font-weight: 600;">Social Media & Outreach</span> - Film, Drama, Music, and Dance Clubs, NISER (2023-2024)</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span><span style="font-weight: 600;">Member</span> - The Free Radicals Club (Chemistry Club of NISER)</span></li>
+                            <li><span style="font-weight: bold;">•</span> <span>Organized community festivals and volunteered for college cultural fest UMANG</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="contact-container">
+                <div class="contact-content">
+                    <h2 class="contact-title serif">Get In Touch</h2>
+                    <p class="contact-description secondary-text">
+                        Interested in collaboration or want to discuss chemistry research? I'd be happy to connect.
+                    </p>
+                    
+                    <div class="contact-card card-bg border-color">
+                        <div class="contact-info">
+                            <p class="contact-label secondary-text">Email</p>
+                            <a href="mailto:binilkrishna.vs@niser.ac.in" class="contact-value">
+                                binilkrishna.vs@niser.ac.in
+                            </a>
+                        </div>
+                        <div class="contact-info contact-divider border-color">
+                            <p class="contact-label secondary-text">Phone</p>
+                            <a href="tel:+918547391212" class="contact-value">
+                                +91-8547391212
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-buttons">
+                        <a href="#" download="Binilkrishna_CV.pdf" class="button button-filled">
+                            <i data-lucide="download" style="width: 20px; height: 20px;"></i>
+                            Download CV
+                        </a>
+                        <a href="https://instagram.com/_binilkrishna_v_s_" target="_blank" rel="noopener noreferrer" class="button button-outline border-color">
+                            <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+                            Instagram
+                        </a>
+                        <a href="https://github.com/Binilkrishna-v-s" target="_blank" rel="noopener noreferrer" class="button button-outline border-color">
+                            <i data-lucide="github" style="width: 20px; height: 20px;"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-color">
+        <p class="secondary-text">
+            © 2025 Binilkrishna V S • Last updated December 2025
+        </p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                themeText.textContent = 'Light';
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                themeText.textContent = 'Dark';
+            }
+        }
+
+        // Section Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                link.classList.add('secondary-text');
+            });
+
+            // Highlight active nav link
+            event.target.classList.add('active');
+            event.target.classList.remove('secondary-text');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
